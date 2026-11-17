@@ -1,0 +1,39 @@
+{   
+    "animation": {
+        "enabled": true,
+        "format": "gif",
+        "theme": "naruto",
+        "fps": 15,
+        "duration_seconds": 4,
+        "chakra_effect": true,
+        "glowing_border": true,
+        "particle_effect": true,
+        "card_hover_effect": false
+    },
+    "github_username": "YOUR_GITHUB_USERNAME",
+
+    "profile": {
+        "theme": "naruto",
+        "show_banner": true,
+        "show_repository_cards": true,
+        "show_statistics": true,
+        "show_contributions": true,
+        "show_social_links": true
+    },
+
+    "repositories": {
+        "visibility": "public",
+        "exclude_forks": false,
+        "exclude_archived": false,
+        "sort_by": "updated",
+        "sort_order": "desc",
+        "max_repositories": 12
+    },
+
+    "appearance": {
+        "primary_color": "#FF7A00",
+        "secondary_color": "#171717",
+        "accent_color": "#FFD700",
+        "card_style": "anime"
+    }
+}

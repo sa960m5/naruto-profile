@@ -1,0 +1,61 @@
+{
+    "theme_name": "naruto",
+    "theme_version": "1.0",
+
+    "colors": {
+        "background": "#0C0E14",
+        "card_background": "#171B25",
+        "primary": "#FF7A00",
+        "secondary": "#FFD700",
+        "text": "#F5F5F5",
+        "muted": "#A0A9B8",
+        "chakra_blue": "#2370E6",
+        "chakra_glow": "#78C8FF"
+    },
+
+    "character": {
+        "enabled": true,
+        "animation_file": "assets/gif/naruto-runner-hq.gif",
+        "position": "top_right",
+        "width": 240,
+        "height": 197
+    },
+
+    "rasengan": {
+        "enabled": true,
+        "position": "bottom_left",
+        "radius": 27,
+        "glow": true,
+        "particles": true,
+        "rotation": true,
+        "pulse": true
+    },
+
+    "chakra_effects": {
+        "enabled": true,
+        "floating_particles": true,
+        "particle_count": 65,
+        "glowing_borders": true,
+        "energy_lines": true
+    },
+
+    "repository_cards": {
+        "enabled": true,
+        "style": "chakra",
+        "border_radius": 13,
+        "border_width": 2,
+        "glow": true,
+        "show_language": true,
+        "show_stars": true,
+        "show_forks": true,
+        "max_cards": 8
+    },
+
+    "animation": {
+        "enabled": true,
+        "fps": 12,
+        "duration_seconds": 4,
+        "loop": true,
+        "quality": "high"
+    }
+}

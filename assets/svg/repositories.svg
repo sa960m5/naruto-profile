@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="766"
+    height="606"
+    viewBox="0 0 766 606"
+>
+
+<style>
+
+    .heading {
+        fill: #F5F5F5;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+    }
+
+    .subtitle {
+        fill: #A0A8B5;
+        font-size: 12px;
+        font-family: Arial, sans-serif;
+    }
+
+    .title {
+        fill: #FF7A00;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+    }
+
+    .description {
+        fill: #A0A8B5;
+        font-size: 12px;
+        font-family: Arial, sans-serif;
+    }
+
+    .language {
+        fill: #FFD700;
+        font-size: 12px;
+        font-family: Arial, sans-serif;
+    }
+
+    .stats {
+        fill: #A0A8B5;
+        font-size: 11px;
+        font-family: Arial, sans-serif;
+    }
+
+    .card {
+        transition: stroke 0.2s ease;
+    }
+
+    a:hover .card {
+        stroke: #FF7A00;
+        stroke-width: 2;
+    }
+
+</style>
+
+<rect
+    width="100%"
+    height="100%"
+    rx="16"
+    fill="#111318"
+/>
+
+<text x="24" y="39" class="heading">
+    🍥 NINJA MISSION DATABASE
+</text>
+
+<text x="24" y="65" class="subtitle">
+    6 PUBLIC PROJECTS DISCOVERED
+</text>
+
+
+    <a href="https://github.com/sa960m5/photon-v2"
+       target="_blank"
+       rel="noopener noreferrer">
+
+        <g transform="translate(24,100)">
+
+            <rect
+                width="350"
+                height="145"
+                rx="13"
+                fill="#191D26"
+                stroke="#343B49"
+                stroke-width="1.2"
+                class="card"
+            />
+
+            <rect
+                x="0"
+                y="0"
+                width="5"
+                height="145"
+                rx="2"
+                fill="#FF7A00"
+            />
+
+            <text x="22" y="37" class="title">
+                photon-v2
+            </text>
+
+            <text x="22" y="69" class="description">Explore this project on GitHub.</text>
+
+            <text x="22" y="119" class="language">
+                Python
+            </text>
+
+            <text x="190" y="119" class="stats">
+                ★ 0   Forks: 0
+            </text>
+
+        </g>
+
+    </a>
+    
+    <a href="https://github.com/sa960m5/SENTINEL-ZAALIMA-main"
+       target="_blank"
+       rel="noopener noreferrer">
+
+        <g transform="translate(392,100)">
+
+            <rect
+                width="350"
+                height="145"
+                rx="13"
+                fill="#191D26"
+                stroke="#343B49"
+                stroke-width="1.2"
+                class="card"
+            />
+
+            <rect
+                x="0"
+                y="0"
+                width="5"
+                height="145"
+                rx="2"
+                fill="#FF7A00"
+            />
+
+            <text x="22" y="37" class="title">
+                SENTINEL-ZAALIMA-main
+            </text>
+
+            <text x="22" y="69" class="description">Explore this project on GitHub.</text>
+
+            <text x="22" y="119" class="language">
+                Python
+            </text>
+
+            <text x="190" y="119" class="stats">
+                ★ 0   Forks: 0
+            </text>
+
+        </g>
+
+    </a>
+    
+    <a href="https://github.com/sa960m5/face_age_estimator"
+       target="_blank"
+       rel="noopener noreferrer">
+
+        <g transform="translate(24,263)">
+
+            <rect
+                width="350"
+                height="145"
+                rx="13"
+                fill="#191D26"
+                stroke="#343B49"
+                stroke-width="1.2"
+                class="card"
+            />
+
+            <rect
+                x="0"
+                y="0"
+                width="5"
+                height="145"
+                rx="2"
+                fill="#FF7A00"
+            />
+
+            <text x="22" y="37" class="title">
+                face_age_estimator
+            </text>
+
+            <text x="22" y="69" class="description">Explore this project on GitHub.</text>
+
+            <text x="22" y="119" class="language">
+                Python
+            </text>
+
+            <text x="190" y="119" class="stats">
+                ★ 0   Forks: 0
+            </text>
+
+        </g>
+
+    </a>
+    
+    <a href="https://github.com/sa960m5/EAHP-Project-PHP"
+       target="_blank"
+       rel="noopener noreferrer">
+
+        <g transform="translate(392,263)">
+
+            <rect
+                width="350"
+                height="145"
+                rx="13"
+                fill="#191D26"
+                stroke="#343B49"
+                stroke-width="1.2"
+                class="card"
+            />
+
+            <rect
+                x="0"
+                y="0"
+                width="5"
+                height="145"
+                rx="2"
+                fill="#FF7A00"
+            />
+
+            <text x="22" y="37" class="title">
+                EAHP-Project-PHP
+            </text>
+
+            <text x="22" y="69" class="description">Explore this project on GitHub.</text>
+
+            <text x="22" y="119" class="language">
+                PHP
+            </text>
+
+            <text x="190" y="119" class="stats">
+                ★ 0   Forks: 0
+            </text>
+
+        </g>
+
+    </a>
+    
+    <a href="https://github.com/sa960m5/TravelWorldTourPackages"
+       target="_blank"
+       rel="noopener noreferrer">
+
+        <g transform="translate(24,426)">
+
+            <rect
+                width="350"
+                height="145"
+                rx="13"
+                fill="#191D26"
+                stroke="#343B49"
+                stroke-width="1.2"
+                class="card"
+            />
+
+            <rect
+                x="0"
+                y="0"
+                width="5"
+                height="145"
+                rx="2"
+                fill="#FF7A00"
+            />
+
+            <text x="22" y="37" class="title">
+                TravelWorldTourPackages
+            </text>
+
+            <text x="22" y="69" class="description">Explore this project on GitHub.</text>
+
+            <text x="22" y="119" class="language">
+                CSS
+            </text>
+
+            <text x="190" y="119" class="stats">
+                ★ 1   Forks: 0
+            </text>
+
+        </g>
+
+    </a>
+    
+    <a href="https://github.com/sa960m5/e_learning_application"
+       target="_blank"
+       rel="noopener noreferrer">
+
+        <g transform="translate(392,426)">
+
+            <rect
+                width="350"
+                height="145"
+                rx="13"
+                fill="#191D26"
+                stroke="#343B49"
+                stroke-width="1.2"
+                class="card"
+            />
+
+            <rect
+                x="0"
+                y="0"
+                width="5"
+                height="145"
+                rx="2"
+                fill="#FF7A00"
+            />
+
+            <text x="22" y="37" class="title">
+                e_learning_application
+            </text>
+
+            <text x="22" y="69" class="description">Explore this project on GitHub.</text>
+
+            <text x="22" y="119" class="language">
+                Dart
+            </text>
+
+            <text x="190" y="119" class="stats">
+                ★ 1   Forks: 0
+            </text>
+
+        </g>
+
+    </a>
+    
+
+<text
+    x="24"
+    y="594"
+    class="subtitle"
+>
+    Generated automatically | 2026-11-16T18:25:17.976304+00:00
+</text>
+
+</svg>
