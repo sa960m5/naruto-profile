@@ -1,0 +1,146 @@
+name: Naruto Profile Automation
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+
+  schedule:
+    - cron: "0 0 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  generate-and-deploy:
+    name: Generate and Deploy Naruto Profile
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # ==========================================
+      # STEP 1: CHECKOUT FRAMEWORK
+      # ==========================================
+
+      - name: Checkout Naruto Profile Framework
+        uses: actions/checkout@v4
+
+      # ==========================================
+      # STEP 2: SETUP PYTHON
+      # ==========================================
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      # ==========================================
+      # STEP 3: INSTALL DEPENDENCIES
+      # ==========================================
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # ==========================================
+      # STEP 4: GENERATE CONFIGURATION
+      # ==========================================
+
+      - name: Prepare Profile Configuration
+        env:
+          PROFILE_USERNAME: ${{ vars.PROFILE_USERNAME }}
+        run: |
+          if [ -z "$PROFILE_USERNAME" ]; then
+            echo "PROFILE_USERNAME variable is missing."
+            exit 1
+          fi
+
+          cp config/config.example.json config/config.json
+
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          config_path = Path("config/config.json")
+
+          with config_path.open("r", encoding="utf-8") as file:
+              config = json.load(file)
+
+          config["github_username"] = os.environ["PROFILE_USERNAME"]
+
+          with config_path.open("w", encoding="utf-8") as file:
+              json.dump(config, file, indent=4)
+
+          print("[SUCCESS] Profile configuration prepared.")
+          PY
+
+      # ==========================================
+      # STEP 5: FETCH REPOSITORIES
+      # ==========================================
+
+      - name: Fetch GitHub Repositories
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/fetch_repositories.py
+
+      # ==========================================
+      # STEP 6: GENERATE NARUTO ANIMATION
+      # ==========================================
+
+      - name: Generate Naruto Showcase
+        run: |
+          python scripts/naruto_theme.py
+          python scripts/generate_animated_showcase.py
+
+      # ==========================================
+      # STEP 7: GENERATE README
+      # ==========================================
+
+      - name: Generate Profile README
+        run: |
+          python scripts/generate_readme.py
+
+      # ==========================================
+      # STEP 8: CHECKOUT PROFILE REPOSITORY
+      # ==========================================
+
+      - name: Checkout GitHub Profile Repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.PROFILE_USERNAME }}/${{ vars.PROFILE_USERNAME }}
+          token: ${{ secrets.PROFILE_REPO_TOKEN }}
+          path: profile-repo
+
+      # ==========================================
+      # STEP 9: COPY GENERATED FILES
+      # ==========================================
+
+      - name: Deploy Generated Profile Files
+        run: |
+          cp dist/profile/README.md profile-repo/README.md
+          cp dist/profile/repository-showcase.gif profile-repo/repository-showcase.gif
+
+      # ==========================================
+      # STEP 10: COMMIT AND PUSH
+      # ==========================================
+
+      - name: Publish Profile Updates
+        working-directory: profile-repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add README.md repository-showcase.gif
+
+          if git diff --cached --quiet; then
+            echo "No profile changes to publish."
+          else
+            git commit -m "Update Naruto GitHub Profile"
+            git push
+            echo "[SUCCESS] Naruto profile updated."
+          fi
