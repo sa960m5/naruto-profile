@@ -956,8 +956,6 @@ class NinjaWayGenerator:
 
         quote = self.generate_quote()
 
-        statistics = self.generate_statistics()
-
         eyebrow = self.escape(
             section.get(
                 "eyebrow", "// MY NINJA WAY"
@@ -991,8 +989,6 @@ class NinjaWayGenerator:
             "{{HIGHLIGHTS_COMPONENT}}": highlights,
 
             "{{QUOTE}}": quote,
-
-            "{{STATS_COMPONENT}}": statistics,
 
             "{{TAGLINE}}": tagline
 
@@ -1075,13 +1071,6 @@ class NinjaWayGenerator:
                 "content", {}
             ).get(
                 "quote", {}
-            ).get("enabled", True)
-        )
-
-        print(
-            "Statistics:",
-            self.config.get(
-                "statistics", {}
             ).get("enabled", True)
         )
 
