@@ -1,5 +1,13 @@
 # Local configuration
 config/config.json
+config/ninja_way.json
+
+# Personal generated data
+assets/data/profile.json
+
+# Generated visual outputs
+assets/hero/hero.svg
+assets/ninja-way/ninja-way.svg
 
 # Python
 __pycache__/
@@ -19,3 +27,5 @@ venv/
 # Operating system
 .DS_Store
 Thumbs.db
+# Generated profile output
+dist/

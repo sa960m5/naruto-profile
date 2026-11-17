@@ -46,7 +46,7 @@ jobs:
           pip install -r requirements.txt
 
       # ==========================================
-      # STEP 4: GENERATE CONFIGURATION
+      # STEP 4: PREPARE PROFILE CONFIGURATION
       # ==========================================
 
       - name: Prepare Profile Configuration
@@ -73,13 +73,22 @@ jobs:
           config["github_username"] = os.environ["PROFILE_USERNAME"]
 
           with config_path.open("w", encoding="utf-8") as file:
-              json.dump(config, file, indent=4)
+              json.dump(config, file, indent=4, ensure_ascii=False)
 
           print("[SUCCESS] Profile configuration prepared.")
           PY
 
       # ==========================================
-      # STEP 5: FETCH REPOSITORIES
+      # STEP 5: PREPARE NINJA WAY CONFIGURATION
+      # ==========================================
+
+      - name: Prepare Ninja Way Configuration
+        run: |
+          cp config/ninja_way.example.json config/ninja_way.json
+          echo "[SUCCESS] Ninja Way configuration prepared."
+
+      # ==========================================
+      # STEP 6: FETCH GITHUB REPOSITORIES
       # ==========================================
 
       - name: Fetch GitHub Repositories
@@ -89,7 +98,17 @@ jobs:
           python scripts/fetch_repositories.py
 
       # ==========================================
-      # STEP 6: GENERATE NARUTO ANIMATION
+      # STEP 7: FETCH GITHUB PROFILE
+      # ==========================================
+
+      - name: Fetch GitHub Profile
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/fetch_profile.py
+
+      # ==========================================
+      # STEP 8: GENERATE NARUTO SHOWCASE
       # ==========================================
 
       - name: Generate Naruto Showcase
@@ -98,7 +117,23 @@ jobs:
           python scripts/generate_animated_showcase.py
 
       # ==========================================
-      # STEP 7: GENERATE README
+      # STEP 9: GENERATE HERO SECTION
+      # ==========================================
+
+      - name: Generate Hero Section
+        run: |
+          python scripts/generate_hero.py
+
+      # ==========================================
+      # STEP 10: GENERATE NINJA WAY SECTION
+      # ==========================================
+
+      - name: Generate Ninja Way Section
+        run: |
+          python scripts/generate_ninja_way.py
+
+      # ==========================================
+      # STEP 11: GENERATE PROFILE README
       # ==========================================
 
       - name: Generate Profile README
@@ -106,7 +141,7 @@ jobs:
           python scripts/generate_readme.py
 
       # ==========================================
-      # STEP 8: CHECKOUT PROFILE REPOSITORY
+      # STEP 12: CHECKOUT PROFILE REPOSITORY
       # ==========================================
 
       - name: Checkout GitHub Profile Repository
@@ -116,26 +151,46 @@ jobs:
           token: ${{ secrets.PROFILE_REPO_TOKEN }}
           path: profile-repo
 
-      # ==========================================
-      # STEP 9: COPY GENERATED FILES
+            # ==========================================
+      # STEP 13: DEPLOY GENERATED FILES
       # ==========================================
 
       - name: Deploy Generated Profile Files
         run: |
+
+          # Profile README
           cp dist/profile/README.md profile-repo/README.md
+
+          # Naruto animated showcase
           cp dist/profile/repository-showcase.gif profile-repo/repository-showcase.gif
 
+          # Generated Hero and Ninja Way assets
+          mkdir -p profile-repo/assets
+          cp dist/profile/assets/hero.svg profile-repo/assets/hero.svg
+
+          mkdir -p profile-repo/assets/ninja-way
+          cp dist/profile/assets/ninja-way/ninja-way.svg profile-repo/assets/ninja-way/ninja-way.svg
+
+          # Character artwork
+          mkdir -p profile-repo/assets/characters
+          cp assets/characters/custom-character.gif profile-repo/assets/characters/
+
+          # Ninja Way artwork
+          cp assets/ninja-way/ninja-duo.gif profile-repo/assets/ninja-way/
       # ==========================================
-      # STEP 10: COMMIT AND PUSH
+      # STEP 14: COMMIT AND PUSH
       # ==========================================
 
       - name: Publish Profile Updates
         working-directory: profile-repo
         run: |
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add README.md repository-showcase.gif
+          git add README.md
+          git add repository-showcase.gif
+          git add assets/
 
           if git diff --cached --quiet; then
             echo "No profile changes to publish."

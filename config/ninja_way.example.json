@@ -1,0 +1,72 @@
+{
+    "enabled": true,
+
+    "section": {
+        "enabled": true,
+        "eyebrow": "// MY NINJA WAY",
+        "headline": "Believe it — then build it",
+        "introduction": "Developer by day, cybersecurity enthusiast by night."
+    },
+
+    "artwork": {
+        "enabled": true,
+        "image": "assets/ninja-way/ninja-duo.gif",
+        "width": 520,
+        "height": 440,
+        "preserve_aspect_ratio": true
+    },
+
+    "content": {
+        "highlights": {
+            "enabled": true,
+            "items": [
+                {
+                    "enabled": true,
+                    "icon": "code",
+                    "title": "Full Stack Development",
+                    "description": "Building applications with modern technologies.",
+                    "color": "#FF7A00"
+                },
+                {
+                    "enabled": true,
+                    "icon": "security",
+                    "title": "Cybersecurity Exploration",
+                    "description": "Learning penetration testing and application security.",
+                    "color": "#4AA8FF"
+                },
+                {
+                    "enabled": true,
+                    "icon": "software",
+                    "title": "Software Developer",
+                    "description": "Developing APIs and database systems.",
+                    "color": "#FFD700"
+                }
+            ]
+        },
+
+        "custom_sections": {
+            "enabled": false,
+            "items": []
+        },
+
+        "quote": {
+            "enabled": true,
+            "text": "Believe in your code. Never stop learning."
+        }
+    },
+
+    "footer": {
+        "enabled": true,
+        "tagline": "YOUR JOURNEY | BUILDING • LEARNING • EXPLORING"
+    },
+
+    "appearance": {
+        "background": "#0C0E14",
+        "card_background": "#171B25",
+        "primary": "#FF7A00",
+        "secondary": "#FFD700",
+        "accent": "#4AA8FF",
+        "text": "#EEF1F7",
+        "muted": "#8B93A7"
+    }
+}

@@ -3,8 +3,9 @@ import shutil
 from pathlib import Path
 from urllib.parse import quote
 
+
 # ==================================================
-# NARUTO PROFILE - README GENERATOR v1.1
+# NARUTO PROFILE - README GENERATOR v2.0
 # ==================================================
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -13,7 +14,13 @@ CONFIG_FILE = ROOT / "config" / "config.json"
 THEME_FILE = ROOT / "config" / "naruto_theme.json"
 REPOSITORY_FILE = ROOT / "assets" / "data" / "repositories.json"
 
+NINJA_WAY_CONFIG = ROOT / "config" / "ninja_way.json"
+
 SHOWCASE_GIF = ROOT / "assets" / "gif" / "repository-showcase.gif"
+
+HERO_SVG = ROOT / "assets" / "hero" / "hero.svg"
+
+NINJA_WAY_SVG = ROOT / "assets" / "ninja-way" / "ninja-way.svg"
 
 OUTPUT_DIR = ROOT / "dist" / "profile"
 OUTPUT_FILE = OUTPUT_DIR / "README.md"
@@ -60,10 +67,21 @@ def get_theme_colors(theme):
     colors = theme.get("colors", {})
 
     return {
-        "background": colors.get("background", "#0C0E14").lstrip("#"),
-        "primary": colors.get("primary", "#FF7A00").lstrip("#"),
-        "secondary": colors.get("secondary", "#FFD700").lstrip("#"),
-        "text": colors.get("text", "#FFFFFF").lstrip("#")
+        "background": colors.get(
+            "background", "#0C0E14"
+        ).lstrip("#"),
+
+        "primary": colors.get(
+            "primary", "#FF7A00"
+        ).lstrip("#"),
+
+        "secondary": colors.get(
+            "secondary", "#FFD700"
+        ).lstrip("#"),
+
+        "text": colors.get(
+            "text", "#FFFFFF"
+        ).lstrip("#")
     }
 
 
@@ -76,6 +94,7 @@ def generate_header(username, config, colors):
     profile = config.get("profile", {})
 
     if not profile.get("show_banner", True):
+
         return f"""\
 <div align="center">
 
@@ -116,6 +135,52 @@ def generate_header(username, config, colors):
 
 
 # ==================================================
+# DYNAMIC HERO SECTION
+# ==================================================
+
+def generate_hero_section(config):
+
+    hero_settings = config.get("hero", {})
+
+    if not hero_settings.get("enabled", True):
+
+        print("[INFO] Hero section disabled.")
+        return ""
+
+    if not HERO_SVG.exists():
+
+        print("[WARNING] Hero SVG not found.")
+        return ""
+
+    destination = OUTPUT_DIR / "assets" / "hero.svg"
+
+    destination.parent.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    shutil.copy2(
+        HERO_SVG,
+        destination
+    )
+
+    print("[SUCCESS] Hero section added.")
+
+    return """\
+## 🚀 Profile Introduction
+
+<div align="center">
+
+<img src="./assets/hero.svg"
+     width="100%"
+     alt="Dynamic Profile Hero"/>
+
+</div>
+
+"""
+
+
+# ==================================================
 # ABOUT SECTION
 # ==================================================
 
@@ -147,7 +212,10 @@ def generate_showcase():
 
     destination = OUTPUT_DIR / "repository-showcase.gif"
 
-    shutil.copy2(SHOWCASE_GIF, destination)
+    shutil.copy2(
+        SHOWCASE_GIF,
+        destination
+    )
 
     return """\
 ## 🌀 Ninja Mission Database
@@ -219,9 +287,75 @@ def generate_repository_section(repositories, config, theme):
 
     content += "\n"
 
-    print(f"[INFO] Repository links generated: {len(visible_repositories)}")
+    print(
+        f"[INFO] Repository links generated: "
+        f"{len(visible_repositories)}"
+    )
 
     return content
+
+
+# ==================================================
+# NINJA WAY SECTION
+# ==================================================
+
+def generate_ninja_way_section():
+
+    if not NINJA_WAY_CONFIG.exists():
+
+        print("[WARNING] Ninja Way configuration not found.")
+        return ""
+
+    ninja_config = load_json(NINJA_WAY_CONFIG)
+
+    if not ninja_config.get("enabled", True):
+
+        print("[INFO] Ninja Way section disabled.")
+        return ""
+
+    section_settings = ninja_config.get("section", {})
+
+    if not section_settings.get("enabled", True):
+
+        print("[INFO] Ninja Way section disabled.")
+        return ""
+
+    if not NINJA_WAY_SVG.exists():
+
+        print("[WARNING] Ninja Way SVG not found.")
+        return ""
+
+    destination = (
+        OUTPUT_DIR
+        / "assets"
+        / "ninja-way"
+        / "ninja-way.svg"
+    )
+
+    destination.parent.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    shutil.copy2(
+        NINJA_WAY_SVG,
+        destination
+    )
+
+    print("[SUCCESS] Ninja Way section added.")
+
+    return """\
+## 🍥 My Ninja Way
+
+<div align="center">
+
+<img src="./assets/ninja-way/ninja-way.svg"
+     width="100%"
+     alt="Ninja Way Section"/>
+
+</div>
+
+"""
 
 
 # ==================================================
@@ -403,11 +537,13 @@ def generate_footer(colors):
 def main():
 
     print("=" * 60)
-    print(" NARUTO PROFILE - README GENERATOR v1.1")
+    print(" NARUTO PROFILE - README GENERATOR v2.0")
     print("=" * 60)
 
+    # Load configuration.
     config, theme, username = load_configuration()
 
+    # Load repository data.
     repository_data = load_json(REPOSITORY_FILE)
 
     repositories = repository_data.get("repositories", [])
@@ -416,6 +552,7 @@ def main():
 
     colors = get_theme_colors(theme)
 
+    # Prepare output directory.
     OUTPUT_DIR.mkdir(
         parents=True,
         exist_ok=True
@@ -423,17 +560,34 @@ def main():
 
     sections = []
 
-    # Header.
+    # --------------------------------------------------
+    # 1. PROFILE HEADER
+    # --------------------------------------------------
+
     sections.append(
         generate_header(username, config, colors)
     )
 
-    # About.
+    # --------------------------------------------------
+    # 2. DYNAMIC HERO
+    # --------------------------------------------------
+
+    sections.append(
+        generate_hero_section(config)
+    )
+
+    # --------------------------------------------------
+    # 3. ABOUT
+    # --------------------------------------------------
+
     sections.append(
         generate_about(username)
     )
 
-    # Repository showcase and links.
+    # --------------------------------------------------
+    # 4. REPOSITORY SHOWCASE AND LINKS
+    # --------------------------------------------------
+
     if profile_settings.get("show_repository_cards", True):
 
         sections.append(
@@ -448,7 +602,18 @@ def main():
             )
         )
 
-    # Statistics.
+    # --------------------------------------------------
+    # 5. NINJA WAY
+    # --------------------------------------------------
+
+    sections.append(
+        generate_ninja_way_section()
+    )
+
+    # --------------------------------------------------
+    # 6. STATISTICS
+    # --------------------------------------------------
+
     sections.append(
         generate_statistics(
             username,
@@ -457,7 +622,10 @@ def main():
         )
     )
 
-    # Contributions.
+    # --------------------------------------------------
+    # 7. CONTRIBUTIONS
+    # --------------------------------------------------
+
     sections.append(
         generate_contributions(
             username,
@@ -466,19 +634,30 @@ def main():
         )
     )
 
-    # Social links.
+    # --------------------------------------------------
+    # 8. SOCIAL LINKS
+    # --------------------------------------------------
+
     sections.append(
         generate_social_links(config)
     )
 
-    # Footer.
+    # --------------------------------------------------
+    # 9. FOOTER
+    # --------------------------------------------------
+
     sections.append(
         generate_footer(colors)
     )
 
-    # Combine README.
+    # --------------------------------------------------
+    # COMBINE README
+    # --------------------------------------------------
+
     readme = "\n".join(
-        section for section in sections if section.strip()
+        section
+        for section in sections
+        if section.strip()
     )
 
     OUTPUT_FILE.write_text(
@@ -486,13 +665,37 @@ def main():
         encoding="utf-8"
     )
 
+    # --------------------------------------------------
+    # GENERATION SUMMARY
+    # --------------------------------------------------
+
     print("\n[SUCCESS] README generated.")
+
     print(f"[INFO] Username: {username}")
-    print(f"[INFO] Repositories available: {len(repositories)}")
+
+    print(
+        f"[INFO] Repositories available: "
+        f"{len(repositories)}"
+    )
+
+    print(
+        f"[INFO] Hero enabled: "
+        f"{config.get('hero', {}).get('enabled', True)}"
+    )
+
+    print(
+        f"[INFO] Ninja Way enabled: "
+        f"{NINJA_WAY_CONFIG.exists()}"
+    )
+
     print(f"[INFO] Output: {OUTPUT_FILE}")
 
     print("\n" + "=" * 60)
 
+
+# ==================================================
+# ENTRY POINT
+# ==================================================
 
 if __name__ == "__main__":
     main()

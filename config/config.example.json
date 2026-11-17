@@ -1,4 +1,4 @@
-{   
+﻿{
     "animation": {
         "enabled": true,
         "format": "gif",
@@ -10,8 +10,8 @@
         "particle_effect": true,
         "card_hover_effect": false
     },
-    "github_username": "YOUR_GITHUB_USERNAME",
 
+    "github_username": "YOUR_GITHUB_USERNAME",
     "profile": {
         "theme": "naruto",
         "show_banner": true,
@@ -28,6 +28,25 @@
         "sort_by": "updated",
         "sort_order": "desc",
         "max_repositories": 12
+    },
+    "hero": {
+        "enabled": true,
+        "roles": [
+            "Full Stack Developer",
+            "Python Developer",
+            "Cybersecurity Enthusiast"
+        ],
+        "tagline": "BUILDING â€¢ LEARNING â€¢ EXPLORING",
+        "description": [
+            "Passionate about software development",
+            "and cybersecurity."
+        ]
+    },
+
+    "character": {
+        "enabled": true,
+        "type": "gif",
+        "path": "assets/characters/custom-character.gif"
     },
 
     "appearance": {
