@@ -1,0 +1,355 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1280"
+     height="800"
+     viewBox="0 0 1280 800">
+
+    <defs>
+
+        <!-- BACKGROUND -->
+
+        <linearGradient id="backgroundGradient"
+                        x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0C0E14"/>
+            <stop offset="100%" stop-color="#111722"/>
+        </linearGradient>
+
+        <!-- BORDER -->
+
+        <linearGradient id="borderGradient"
+                        x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FF7A00"/>
+            <stop offset="50%" stop-color="#713D35"/>
+            <stop offset="100%" stop-color="#FFD700"/>
+        </linearGradient>
+
+        <!-- ARTWORK -->
+
+        <linearGradient id="artGradient"
+                        x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#171B25"/>
+            <stop offset="100%" stop-color="#080B12"/>
+        </linearGradient>
+
+        <!-- ORANGE -->
+
+        <linearGradient id="orangeGradient">
+            <stop offset="0%" stop-color="#FF7A00"/>
+            <stop offset="100%" stop-color="#FFD700"/>
+        </linearGradient>
+
+        <!-- METALLIC SHURIKEN -->
+
+        <linearGradient id="metalGradient"
+                        x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#F5F7FA"/>
+            <stop offset="45%" stop-color="#8995A8"/>
+            <stop offset="100%" stop-color="#353D4B"/>
+        </linearGradient>
+
+        <!-- DOT PATTERN -->
+
+        <pattern id="dotPattern"
+                 width="24"
+                 height="24"
+                 patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1"
+                    fill="#FFFFFF"
+                    opacity="0.055"/>
+        </pattern>
+
+        <!-- ARTWORK CLIP: LOCAL COORDINATES -->
+
+        <clipPath id="artClip"
+                  clipPathUnits="userSpaceOnUse">
+            <rect x="0" y="0"
+                  width="520"
+                  height="440"
+                  rx="20"/>
+        </clipPath>
+
+        <!-- ANIMATIONS -->
+
+        <style>
+
+            .main-text {
+                font-family: Arial, Helvetica, sans-serif;
+                fill: #EEF1F7;
+            }
+
+            .muted-text {
+                font-family: Arial, Helvetica, sans-serif;
+                fill: #8B93A7;
+            }
+
+            .eyebrow {
+                font-family: monospace;
+                font-size: 15px;
+                font-weight: bold;
+                letter-spacing: 3px;
+                fill: #FF7A00;
+            }
+
+            .headline {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 34px;
+                font-weight: bold;
+                fill: #EEF1F7;
+            }
+
+            .floating-particle {
+                animation: particleFloat 4s ease-in-out infinite alternate;
+            }
+
+            .highlight-icon {
+                animation: iconPulse 3s ease-in-out infinite;
+            }
+
+            .border-light {
+                animation: borderPulse 4s ease-in-out infinite;
+            }
+
+            .art-float {
+                animation: artworkFloat 5s ease-in-out infinite;
+            }
+
+            .floating-shuriken {
+                transform-box: fill-box;
+                transform-origin: center;
+                animation: shurikenFloat 8s linear infinite;
+            }
+
+            .shuriken-two {
+                animation-delay: -3s;
+                animation-duration: 10s;
+            }
+
+            .shuriken-three {
+                animation-delay: -6s;
+                animation-duration: 12s;
+            }
+
+            .chakra-star {
+                transform-box: fill-box;
+                transform-origin: center;
+                animation: starPulse 3s ease-in-out infinite alternate;
+            }
+
+            @keyframes particleFloat {
+                from {
+                    transform: translateY(0);
+                    opacity: 0.35;
+                }
+                to {
+                    transform: translateY(-12px);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes iconPulse {
+                0%, 100% { opacity: 0.8; }
+                50% { opacity: 1; }
+            }
+
+            @keyframes borderPulse {
+                0%, 100% { opacity: 0.65; }
+                50% { opacity: 1; }
+            }
+
+            @keyframes artworkFloat {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-5px); }
+            }
+
+            @keyframes shurikenFloat {
+                0% {
+                    transform: translate(0,0) rotate(0deg);
+                    opacity: 0.35;
+                }
+                50% {
+                    transform: translate(12px,-18px) rotate(180deg);
+                    opacity: 0.9;
+                }
+                100% {
+                    transform: translate(0,0) rotate(360deg);
+                    opacity: 0.35;
+                }
+            }
+
+            @keyframes starPulse {
+                from {
+                    opacity: 0.2;
+                    transform: scale(0.7);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1.2);
+                }
+            }
+
+        </style>
+
+    </defs>
+
+    <!-- BACKGROUND -->
+
+    <rect width="1280" height="800"
+          fill="url(#backgroundGradient)"/>
+
+    <rect width="1280" height="800"
+          fill="url(#dotPattern)"/>
+
+    <!-- CHAKRA PARTICLES -->
+
+    <g fill="#FF7A00">
+        <circle class="floating-particle" cx="140" cy="90" r="3"/>
+        <circle class="floating-particle" cx="370" cy="115" r="2"/>
+        <circle class="floating-particle" cx="760" cy="75" r="3"/>
+        <circle class="floating-particle" cx="1030" cy="115" r="2"/>
+        <circle class="floating-particle" cx="1180" cy="85" r="3"/>
+    </g>
+
+    <g fill="#4AA8FF">
+        <circle class="floating-particle" cx="220" cy="140" r="2"/>
+        <circle class="floating-particle" cx="650" cy="105" r="3"/>
+        <circle class="floating-particle" cx="930" cy="145" r="2"/>
+    </g>
+
+    <!-- FLOATING NINJA STARS -->
+
+    <g>
+
+        <g class="floating-shuriken"
+           transform="translate(100 330)">
+            <path d="M0 -19 L5 -5 L19 0 L5 5
+                     L0 19 L-5 5 L-19 0 L-5 -5 Z"
+                  fill="url(#metalGradient)"
+                  stroke="#FF7A00"
+                  stroke-width="1.5"/>
+            <circle cx="0" cy="0" r="3" fill="#FFD700"/>
+        </g>
+
+        <g class="floating-shuriken shuriken-two"
+           transform="translate(1180 360)">
+            <path d="M0 -17 L5 -5 L17 0 L5 5
+                     L0 17 L-5 5 L-17 0 L-5 -5 Z"
+                  fill="url(#metalGradient)"
+                  stroke="#FFD700"
+                  stroke-width="1.5"/>
+            <circle cx="0" cy="0" r="3" fill="#FF7A00"/>
+        </g>
+
+        <g class="floating-shuriken shuriken-three"
+           transform="translate(590 700)">
+            <path d="M0 -14 L4 -4 L14 0 L4 4
+                     L0 14 L-4 4 L-14 0 L-4 -4 Z"
+                  fill="url(#metalGradient)"
+                  stroke="#FF7A00"
+                  stroke-width="1.5"/>
+            <circle cx="0" cy="0" r="2.5" fill="#FFD700"/>
+        </g>
+
+    </g>
+
+    <!-- CHAKRA STARS -->
+
+    <g fill="#FFD700">
+
+        <path class="chakra-star"
+              d="M700 120 L703 128 L711 131
+                 L703 134 L700 142 L697 134
+                 L689 131 L697 128 Z"/>
+
+        <path class="chakra-star"
+              d="M1100 180 L1102 185 L1107 187
+                 L1102 189 L1100 194 L1098 189
+                 L1093 187 L1098 185 Z"/>
+
+        <path class="chakra-star"
+              d="M170 650 L173 657 L180 660
+                 L173 663 L170 670 L167 663
+                 L160 660 L167 657 Z"/>
+
+    </g>
+
+    <!-- MAIN CARD -->
+
+    <rect x="15" y="165"
+          width="1250" height="600"
+          rx="25"
+          fill="#111722"
+          stroke="url(#borderGradient)"
+          stroke-width="1.5"
+          opacity="0.98"/>
+
+    <rect x="15" y="165"
+          width="1250" height="600"
+          rx="25"
+          fill="url(#dotPattern)"/>
+
+    <rect class="border-light"
+          x="15" y="165"
+          width="1250" height="600"
+          rx="25"
+          fill="none"
+          stroke="#FF7A00"
+          stroke-width="1"
+          opacity="0.5"/>
+
+    <!-- LEFT ARTWORK PANEL -->
+
+    <rect x="44" y="215"
+          width="520" height="440"
+          rx="20"
+          fill="url(#artGradient)"/>
+
+    <!-- IMPORTANT: TRANSLATE FIRST, THEN CLIP LOCALLY -->
+
+    <g transform="translate(44 215)"
+       clip-path="url(#artClip)">
+
+        <g class="art-float">
+            {{ARTWORK_COMPONENT}}
+        </g>
+
+    </g>
+
+    <!-- RIGHT INTRODUCTION -->
+
+    <g transform="translate(610,230)">
+
+        <text class="eyebrow" x="0" y="0">
+            {{EYEBROW}}
+        </text>
+
+        <text class="headline" x="0" y="52">
+            {{HEADLINE}}
+        </text>
+
+        <text class="muted-text"
+              x="0" y="85"
+              font-size="15">
+            {{INTRODUCTION}}
+        </text>
+
+        <!-- THREE DYNAMIC HIGHLIGHTS -->
+
+        {{HIGHLIGHTS_COMPONENT}}
+
+        <!-- DYNAMIC QUOTE -->
+
+        {{QUOTE}}
+
+    </g>
+
+    <!-- FOOTER -->
+
+    <text class="muted-text"
+          x="640"
+          y="755"
+          font-size="11"
+          text-anchor="middle"
+          letter-spacing="2">
+        {{TAGLINE}}
+    </text>
+
+</svg>
