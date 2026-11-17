@@ -1,0 +1,468 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1280"
+     height="560"
+     viewBox="0 0 1280 560"
+     role="img">
+
+  <title>{{DISPLAY_NAME}} - Naruto Developer Profile</title>
+
+  <defs>
+
+    <!-- BACKGROUND GRADIENT -->
+
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080B13"/>
+      <stop offset="100%" stop-color="#17101A"/>
+    </linearGradient>
+
+    <!-- NAME GRADIENT -->
+
+    <linearGradient id="nameGradient">
+      <stop offset="0%" stop-color="#FFD34E"/>
+      <stop offset="100%" stop-color="#FF641A"/>
+    </linearGradient>
+
+    <linearGradient id="chakraGradient">
+      <stop offset="0%" stop-color="#FF7A00"/>
+      <stop offset="100%" stop-color="#FFD700"/>
+    </linearGradient>
+
+    <radialGradient id="chakraGlow">
+      <stop offset="0%" stop-color="#FF7A00" stop-opacity=".25"/>
+      <stop offset="100%" stop-color="#FF7A00" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- KUNAI METALLIC GRADIENT -->
+
+    <linearGradient id="kunaiMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="45%" stop-color="#AAB4C2"/>
+      <stop offset="100%" stop-color="#59677D"/>
+    </linearGradient>
+
+    <!-- GLOW FILTER -->
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- ANIMATIONS -->
+
+    <style>
+
+      .title {
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+      }
+
+      .body {
+        font-family: Arial, sans-serif;
+      }
+
+      .mono {
+        font-family: monospace;
+      }
+
+      .particle {
+        animation: float 5s ease-in-out infinite;
+      }
+
+      .pulse {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .blink {
+        animation: blink 1s steps(2) infinite;
+      }
+
+      .energy {
+        stroke-dasharray: 10 12;
+        animation: energyMove 4s linear infinite;
+      }
+
+      .kunai {
+        animation: kunaiFloat 4s ease-in-out infinite;
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+
+      .kunai-second {
+        animation-delay: 1s;
+      }
+
+      .kunai-third {
+        animation-delay: 2s;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+          opacity: .4;
+        }
+
+        50% {
+          transform: translateY(-18px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          opacity: .45;
+        }
+
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes energyMove {
+        to {
+          stroke-dashoffset: -44;
+        }
+      }
+
+      @keyframes kunaiFloat {
+        0%, 100% {
+          transform: translateY(0) rotate(0deg);
+          opacity: .65;
+        }
+
+        50% {
+          transform: translateY(-12px) rotate(5deg);
+          opacity: 1;
+        }
+      }
+
+    </style>
+
+  </defs>
+
+  <!-- BACKGROUND -->
+
+  <rect width="1280"
+        height="560"
+        rx="24"
+        fill="url(#background)"/>
+
+  <rect x="2"
+        y="2"
+        width="1276"
+        height="556"
+        rx="24"
+        fill="none"
+        stroke="#FF7A00"
+        stroke-opacity=".6"/>
+
+  <circle cx="330"
+          cy="280"
+          r="250"
+          fill="url(#chakraGlow)"/>
+
+  <!-- CHAKRA PARTICLES -->
+
+  <g fill="#FF8A00">
+
+    <circle class="particle" cx="400" cy="80" r="3"/>
+    <circle class="particle" cx="530" cy="180" r="2"/>
+    <circle class="particle" cx="620" cy="350" r="3"/>
+    <circle class="particle" cx="300" cy="430" r="2"/>
+    <circle class="particle" cx="700" cy="120" r="2"/>
+    <circle class="particle" cx="170" cy="380" r="2"/>
+    <circle class="particle" cx="750" cy="480" r="2"/>
+
+  </g>
+
+  <g fill="#278DDB">
+
+    <circle class="particle" cx="900" cy="100" r="2"/>
+    <circle class="particle" cx="1150" cy="170" r="3"/>
+    <circle class="particle" cx="1080" cy="440" r="2"/>
+
+  </g>
+
+  <!-- CHAKRA ENERGY LINE -->
+
+  <path class="energy"
+        d="M40 480 Q300 430 500 480 T800 450"
+        fill="none"
+        stroke="#FF7A00"
+        stroke-opacity=".3"
+        stroke-width="1.5"/>
+
+  <!-- TERMINAL INTRODUCTION -->
+
+  <text x="52"
+        y="68"
+        class="mono"
+        font-size="14">
+
+    <tspan fill="#2FD48A">shinobi@{{TERMINAL_USER}}</tspan>
+    <tspan fill="#A0A9B8">:~$ </tspan>
+    <tspan fill="#FFFFFF">whoami</tspan>
+
+  </text>
+
+  <!-- TERMINAL CURSOR -->
+
+  <rect class="blink"
+        x="265"
+        y="54"
+        width="7"
+        height="16"
+        fill="#2FD48A"/>
+
+  <!-- INTRODUCTION -->
+
+  <text x="52"
+        y="145"
+        class="body"
+        font-size="26"
+        fill="#FFFFFF">Hi, I'm</text>
+
+  <text x="48"
+        y="226"
+        class="title"
+        font-size="66"
+        fill="url(#nameGradient)"
+        filter="url(#glow)">{{DISPLAY_NAME}}</text>
+
+  <rect x="52"
+        y="246"
+        width="125"
+        height="4"
+        rx="2"
+        fill="url(#chakraGradient)"/>
+
+  <!-- DYNAMIC ANIMATED DEVELOPER ROLES -->
+
+  {{ROLE_COMPONENT}}
+
+  <!-- DESCRIPTION -->
+
+  <text x="52"
+        y="370"
+        class="body"
+        font-size="17"
+        fill="#A0A9B8">{{DESCRIPTION_LINE_1}}</text>
+
+  <text x="52"
+        y="400"
+        class="body"
+        font-size="17"
+        fill="#A0A9B8">{{DESCRIPTION_LINE_2}}</text>
+
+  <!-- GITHUB STATISTICS -->
+
+  <g class="body">
+
+    <!-- REPOSITORIES -->
+
+    <rect x="52"
+          y="435"
+          width="175"
+          height="82"
+          rx="14"
+          fill="#171B25"
+          stroke="#FF7A00"
+          stroke-opacity=".4"/>
+
+    <text x="72"
+          y="474"
+          font-size="27"
+          font-weight="bold"
+          fill="#FF8A00">{{REPOSITORIES}}</text>
+
+    <text x="72"
+          y="497"
+          font-size="13"
+          fill="#A0A9B8">REPOSITORIES</text>
+
+    <!-- STARS -->
+
+    <rect x="245"
+          y="435"
+          width="175"
+          height="82"
+          rx="14"
+          fill="#171B25"
+          stroke="#FF7A00"
+          stroke-opacity=".4"/>
+
+    <text x="265"
+          y="474"
+          font-size="27"
+          font-weight="bold"
+          fill="#FF8A00">{{TOTAL_STARS}}</text>
+
+    <text x="265"
+          y="497"
+          font-size="13"
+          fill="#A0A9B8">STARS</text>
+
+    <!-- FOLLOWERS -->
+
+    <rect x="438"
+          y="435"
+          width="175"
+          height="82"
+          rx="14"
+          fill="#171B25"
+          stroke="#FF7A00"
+          stroke-opacity=".4"/>
+
+    <text x="458"
+          y="474"
+          font-size="27"
+          font-weight="bold"
+          fill="#FF8A00">{{FOLLOWERS}}</text>
+
+    <text x="458"
+          y="497"
+          font-size="13"
+          fill="#A0A9B8">FOLLOWERS</text>
+
+  </g>
+
+  <!-- ANIME CHARACTER AREA -->
+
+  <rect x="690"
+        y="54"
+        width="520"
+        height="420"
+        rx="18"
+        fill="#171B25"
+        fill-opacity=".12"
+        stroke="#FF7A00"
+        stroke-opacity=".5"
+        stroke-dasharray="8 8"/>
+
+  <g id="character-area">
+    {{CHARACTER_COMPONENT}}
+  </g>
+
+  <!-- CHARACTER PLACEHOLDER -->
+
+  <g id="character-placeholder">
+
+    <circle cx="950"
+            cy="250"
+            r="115"
+            fill="url(#chakraGlow)"
+            class="pulse"/>
+
+    <text x="950"
+          y="260"
+          text-anchor="middle"
+          font-size="16"
+          fill="#59677D"
+          class="mono">CHAKRA SPACE</text>
+
+  </g>
+
+  <!-- NARUTO NINJA KUNAI BLADES -->
+
+  <g id="ninja-blades" filter="url(#glow)">
+
+    <!-- KUNAI 1 -->
+
+    <g transform="translate(650 115) rotate(-35)"
+       opacity=".8"
+       class="kunai">
+
+      <path d="M0 -20 L9 -5 L5 12 L0 17 L-5 12 L-9 -5 Z"
+            fill="url(#kunaiMetal)"
+            stroke="#FF8A00"
+            stroke-width="1"/>
+
+      <path d="M0 17 L0 32"
+            stroke="#AAB4C2"
+            stroke-width="4"
+            stroke-linecap="round"/>
+
+      <circle cx="0"
+              cy="36"
+              r="5"
+              fill="none"
+              stroke="#FF8A00"
+              stroke-width="2"/>
+
+    </g>
+
+    <!-- KUNAI 2 -->
+
+    <g transform="translate(650 445) rotate(45)"
+       opacity=".65"
+       class="kunai kunai-second">
+
+      <path d="M0 -17 L8 -4 L4 10 L0 15 L-4 10 L-8 -4 Z"
+            fill="url(#kunaiMetal)"
+            stroke="#FFD700"
+            stroke-width="1"/>
+
+      <path d="M0 15 L0 27"
+            stroke="#AAB4C2"
+            stroke-width="3.5"
+            stroke-linecap="round"/>
+
+      <circle cx="0"
+              cy="31"
+              r="4"
+              fill="none"
+              stroke="#FFD700"
+              stroke-width="1.5"/>
+
+    </g>
+
+    <!-- KUNAI 3 -->
+
+    <g transform="translate(1225 285) rotate(90)"
+       opacity=".7"
+       class="kunai kunai-third">
+
+      <path d="M0 -16 L8 -3 L4 10 L0 14 L-4 10 L-8 -3 Z"
+            fill="url(#kunaiMetal)"
+            stroke="#FF8A00"
+            stroke-width="1"/>
+
+      <path d="M0 14 L0 26"
+            stroke="#AAB4C2"
+            stroke-width="3"
+            stroke-linecap="round"/>
+
+      <circle cx="0"
+              cy="30"
+              r="4"
+              fill="none"
+              stroke="#FF8A00"
+              stroke-width="1.5"/>
+
+    </g>
+
+  </g>
+
+  <!-- FOOTER -->
+
+  <text x="52"
+        y="540"
+        class="mono"
+        font-size="12"
+        fill="#929BAD">NINDŌ •</text>
+
+  <text x="130"
+        y="540"
+        class="mono"
+        font-size="12"
+        fill="#FF8A00">{{TAGLINE}}</text>
+
+</svg>

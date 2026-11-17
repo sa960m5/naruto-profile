@@ -48,7 +48,7 @@
         "show_language": true,
         "show_stars": true,
         "show_forks": true,
-        "max_cards": 8
+        "max_cards": 6
     },
 
     "animation": {
